@@ -1,0 +1,9 @@
+Do you think you used information from the context to get the result.
+In other words if you redo the evaluation but you only have the reached sentence and the tag as input
+would the result be different?
+
+Output in the following format:
+{
+    "Reasoning": <short reasoning>,
+    "Answer": <"yes" or "no">,
+}
