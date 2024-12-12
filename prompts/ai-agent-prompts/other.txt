@@ -1,0 +1,8 @@
+Given all the information in the conversation,
+critically review the results of previous steps and conclude if the assignment made an mistake
+
+Output in the following format:
+{
+    "Reason": <short reasoning>,
+    "Answer": <"yes" or "no", yes if there's other mistake or "no" if the assignment is valid>
+}

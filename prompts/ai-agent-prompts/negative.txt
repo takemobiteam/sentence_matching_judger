@@ -1,0 +1,16 @@
+Negative means that the matched sentence explicitly negates the intended meaning of the tag, demonstrating a clear contradiction.
+For example, for the tag pets allowed, the matched sentence "no pets allowed" indicates a feature opposite to what "pets allowed" represents.
+If the sentence is unrelated or does not explicitly contradict the tag, it should not be considered a negative relationship.
+
+For tags inherently describing a limitation, constraint, or universally negative feature (e.g., "Long Time Waiting"), the tag should be assigned regardless of user sentiment. A user's dissatisfaction or negative sentiment toward such a feature is irrelevant, as these tags are intended to reflect the feature's presence, not its quality.
+For example:
+If a tag like "Long Time Waiting" is applied, and the user comment says, "The wait times were ridiculously long," the tag is valid and should still be assigned.
+Similarly, "No Parking" remains valid, even if users express dissatisfaction.
+
+Judge if the assignment made a Negative Mistake.
+
+Output in the following format:
+{
+    "Reasoning": <short reasoning>,
+    "Answer": <"yes" or "no">,
+}

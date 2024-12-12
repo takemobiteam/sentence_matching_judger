@@ -1,0 +1,21 @@
+Your goal is to evaluate whether the tag assignment algorithm is functioning correctly, particularly by identifying errors in how tags are applied.
+
+For tags like pizza, the algorithm should avoid assigning the tag if the only context involves negative quality descriptions (e.g., "The pizza is super oily," "The pizza tastes like trash"). These descriptions indicate bad quality, and the tag should not be assigned.
+
+For tags inherently describing a limitation, constraint, or universally negative feature (e.g., "Long Time Waiting"), the tag should be assigned regardless of user sentiment. A user's dissatisfaction or negative sentiment toward such a feature is irrelevant, as these tags are intended to reflect the feature's presence, not its quality.
+
+For example:
+
+If a tag like "Long Time Waiting" is applied, and the user comment says, "The wait times were ridiculously long," the tag is valid and should still be assigned.
+Similarly, "No Parking" remains valid, even if users express dissatisfaction.
+However, for a tag like "pizza," negative quality descriptions mean the tag should not be assigned.
+
+Output Format:
+
+{
+    "Reasoning": <short reasoning>,
+    "Answer": <"yes" or "no">
+}
+
+Answer yes only if the algorithm has failed by assigning a tag based on negative quality sentiment when it shouldn't have (e.g., "bad pizza").
+Answer no otherwise, for Tags inherently describing a limitation or constraint (e.g., "Long Time Waiting") should still be assigned even if the user's sentiment is negative, and your output should be no also.

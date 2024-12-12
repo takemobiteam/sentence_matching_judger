@@ -1,0 +1,19 @@
+"Wrong meaning" occurs when the string matching algorithm assigns a tag based on a context that does not explicitly align with the intended meaning of the tag. This includes cases where:
+
+The matched part is a fragment of a larger phrase, and its meaning in context diverges from the tag's intended meaning.
+The matched part refers to a concept or context unrelated to the tag's intended purpose.
+There is insufficient information to confirm that the tag aligns with the context.
+
+For tags inherently describing a limitation, constraint, or universally negative feature (e.g., "Long Time Waiting"), the tag should be assigned regardless of user sentiment. A user's dissatisfaction or negative sentiment toward such a feature is irrelevant, as these tags are intended to reflect the feature's presence, not its quality.
+For example:
+If a tag like "Long Time Waiting" is applied, and the user comment says, "The wait times were ridiculously long," the tag is valid and should still be assigned.
+Similarly, "No Parking" remains valid, even if users express dissatisfaction.
+
+Say "yes" if the intended meaning of the tag is altered, unrelated, or cannot be confidently confirmed based on the sentence context.
+Say "no" if the matched part explicitly supports or aligns with the tag's intended meaning, even when additional context modifies or expands its interpretation.
+
+{
+    "Does the matched part explicitly convey the intended meaning of the tag within the sentence?": <short reason and reply>,
+    "In cases of ambiguity or insufficient context, is the tag assignment still defensible based on the tag's meaning?": <short reason and reply>,
+    "Answer": "<yes or no>"
+}

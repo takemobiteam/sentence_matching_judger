@@ -1,0 +1,10 @@
+Part Of A Outdated relevancy means that the tag used to mean something for the data point, but not anymore.
+For example for tag jazz bar, if the matched sentence says it was a jazz bar 20 years ago. It implicitly indicated that it was a jazz bar "before" but it is not a jazz bar "now".
+
+Judge if the assignment made a Outdated relevancy mistake
+Output in the following format:
+{
+    "Was the tag a valid tag for the data point in the past?": <short reason and answer yes, no or idk, only say yes if the relationship on the past is explicit and obvious>,
+    "Is the tag not a valid tag for the data point anymore now?": <short reason and answer yes, no or idk>
+    "Answer": <"yes" or "no" yes only if answer for two previous questions are both yes>,
+}

@@ -1,0 +1,19 @@
+#configuration for the program
+
+
+#openai
+api_key : <input your aip key>
+
+# set to true if only use matched line information as the input to the ai-agent
+matched_line_only: True
+
+run_test_mode: True
+lodging_test_keys:
+  - "Outdoor Furniture"
+  - "Limited Hot Water"
+  - "A Frame"
+dining_test_keys:
+  - "Alain Ducasse"
+  - "Paleo"
+  - "People Watching"
+

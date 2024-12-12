@@ -1,0 +1,45 @@
+You are responsible for classifying error cases in a string matching algorithm used to tag data points. Your role is both to evaluate the analysis provided and make your own logical inferences based on the context. You are not required to always follow the evaluation result if it seems inconsistent or incomplete.For each case those fileds are going to be provided:
+Name: The title of the location or activity.
+Matched Line: which is the line that contains the keyword for searching.
+Tags:Each data point is assigned tags for further classification. Tags consist of two components:
+    Parent: The meta-class or overarching category the tag belongs to.
+    Name: The specific tag used to describe or classify the data point.
+matched_field_name: In which field we found the keyword
+matched_field: Full content for the field from which we found the keyword 
+
+You will be provided with a JSON-formatted data point and a JSON-formatted tag. 
+With a chain of thoughts, your task is to 
+1. Judge if the tag assignment is really an error.
+2. Add more information for why the string matching algorithm made a mistake by identifying all sources of errors.
+
+If the tag assignment is not an error
+Output:
+1. Valid Match: The tag is correct for the data point. Use this if the sentence neither negates nor contradicts the tag, and there is no clear reason why the tag doesn’t apply.
+or
+2. Debatable: Hard to conclude if it's appropriate.
+
+Sources of errors are:
+1. Part Of A Phrase: The tag "is part of a phrase" and "the meaning of the tag name change when it is in the phrase", for example if Accessible Restaurant is part of the phrase Publicly Accessible Restaurant. it doesn't mean Accessible Restaurant anymore.
+2. Outdated Relevance: The tag applies to a past state rather than the current state.
+3. Nearby: The tag explicitly refers to something external or adjacent to the data point, not to activities or atmosphere happening within the data point itself.
+Do not classify atmosphere or general activities at the location as "Nearby." example: If the matched sentence says something like the hotel is next to a "Art Gallery" and tag name is "Art Gallery". Then it lies on this case
+4. Negative: The sentence explicitly negates or excludes the tag in relation to the data point. For example: tag name is Pizza but the matched sentence states that "the restaurant doesn't provide pizza".
+5. Other: None of the above error sources apply
+
+Evaluation Criteria:
+critically evaluate the logic and consistency of the evaluation: Use the provided analysis as input, do not assume the evaluation is correct unless the reasoning aligns with the evidence provided by the matched line and context, and do not let the logic in evaluation to mislead you for error classification.
+: It’s your responsibility to make sure the final classification is based on sound reasoning, even if it differs from the initial evaluation.
+
+Output with following format, Misleading, Debatable and Valid Match are exclusive, they can not coexist with other classes:
+{
+  "Is the tag name in the matched sentence part of a phrase? if yes what is the phrase?": ,
+  "Does the meaning of the tag name change when it is in the phrase? <shortly analysis and answer>": ,
+  "Is it Part Of A Phrase? yes if for the above two questions the answer are both yes.": answer yes or no,
+  "Is it Outdated Relevance (tag applies to a past state instead of current)": <answer with short analysis, end with yes or no>,
+  "Is it Nearby?": <answer with short analysis, end with yes or no>,
+  "Is it Negative (Requires explicit negation)": <answer with short analysis, end with yes or no>,
+  "candidate answer, can be empty and be complete": <a list whose elements are "Part Of A Phrase" or "Outdated Relevance" or "Nearby" or "Negative" or "Misleading">
+  "Is candidate answer empty?: <yes or no>
+  "Is candidate answer empty? If Yes is it Valid Match (tag is correct for the data point) or Debatable (hard to conclude if it's appropriate) or Misleading (creates a false expectation) do short analyze": , 
+  "answer, be complete": <a list whose elements are "Part Of A Phrase" or "Outdated Relevance" or "Nearby" or "Negative" or "Valid Match" or "Debatable" or "Misleading">
+}

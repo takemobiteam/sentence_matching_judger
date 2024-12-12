@@ -1,0 +1,9 @@
+Nearby means the tag represents or describes something next to the datapoint instead of represents or describes the datapoint itself
+For example for tag cozy, if the matched sentence says "There is a cozy beach 2 miles away from our location". It's not describing an onsite facility and it's not describing the data point itself.
+Judge if the assignment made a Nearby mistake
+
+Output in the following format:
+{
+    "Reasoning": <short reasoning>,
+    "Answer": <"yes" or "no">,
+}
